@@ -2,12 +2,7 @@
 
 這是一個專為維基共享資源（Wikimedia Commons）每月照片挑戰設計的自動化計票工具，旨在精確解析 MediaWiki 語法並根據社群規則計算得分與排名。
 
-## 1. 挑戰資訊：工廠內部 (Factory interiors)
-* [cite_start]**投票截止時間：** 2026 年 1 月 31 日 UTC 午夜 [cite: 1]。
-* [cite_start]**挑戰主題：** Factory interiors [cite: 1]。
-* **原始資料來源：** `2025-12-Factory Interior.mw`。
-
-## 2. 統計邏輯與規則
+## 1. 統計邏輯與規則
 
 ### 評分機制
 * **得分 (Score)：** $3*/2*/1*$ 票數之加權總和（權重分別為 3, 2, 1 分）。
@@ -19,7 +14,7 @@
 2.  **誠實原則：** 禁止投給自己的作品。
 3.  **格式修正：** 同一投票者若對多張照片投下重複的 1/2/3 名等級，除第一筆外皆自動轉換為 0 分（高度推薦）。
 
-## 3. 推薦程式架構
+## 2. 推薦程式架構
 
 ### 技術棧 (Suggested Tech Stack)
 * **Language:** Python 3.10+
@@ -41,7 +36,7 @@ graph TD
     Sort --> Output[生成 Markdown 報表]
 ```
 
-## 4. API 整合參考
+## 3. API 整合參考
 本工具需串接 Wikimedia Commons API  進行動態驗證：
 * 用戶資格： action=query&list=users&usprop=editcount|registration
 * 參賽者確認： action=query&prop=revisions&titles=File:NAME.jpg
