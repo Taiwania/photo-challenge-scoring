@@ -2,6 +2,8 @@
 
 這是一個專為維基共享資源（Wikimedia Commons）每月照片挑戰設計的自動化計票工具，旨在精確解析 MediaWiki 語法並根據社群規則計算得分與排名。
 
+本工具使用 Vibe coding (Google Anitgraivity) 的方法進行開發，採用敏捷開發方式。
+
 ## 1. 統計邏輯與規則
 
 ### 評分機制
