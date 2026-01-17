@@ -35,7 +35,7 @@ graph TD
     Logic -- 自投/重複 --> Modify[修正為 0 分]
     Logic -- 正常 --> Calc[加總 Score/Support]
     Calc --> Sort[執行 Tie-break 排序]
-    Sort --> Output[生成 Markdown 報表]
+    Sort --> Output[輸出結果]
 ```
 
 ## 3. API 整合參考
