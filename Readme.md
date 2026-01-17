@@ -42,3 +42,25 @@ graph TD
 本工具需串接 Wikimedia Commons API  進行動態驗證：
 * 用戶資格： action=query&list=users&usprop=editcount|registration
 * 參賽者確認： action=query&prop=revisions&titles=File:NAME.jpg
+
+## 4. 使用方式
+
+### 環境設定
+由於維基媒體基金會要求在使用 API 時必須提供有效的使用者名稱及電子郵件，請建立 .env 檔案，其中包含以下環境變數：
+
+```
+COMMONS_BOT_USERNAME=ExampleUser
+COMMONS_BOT_EMAIL=example@email.com
+```
+
+### 執行流程
+1. 建立輸入文件夾 `input`，其中包含所有需要處理的 .mw 檔案。
+2. 建立輸出文件夾 `output`，其中包含所有處理後的結果。
+3. 執行主程式 `main.py`：
+
+```bash
+python main.py
+``` 
+
+### 輸入格式要求
+請直接複製 https://commons.wikimedia.org/wiki/Commons:Photo_Challenge/20XX_-_Month_-_Topic/Voting 的內容，並儲存為 .mw 檔案。

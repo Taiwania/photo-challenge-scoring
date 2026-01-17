@@ -3,3 +3,9 @@
 /formats
 /imports
 .env
+
+# uv / python environment
+.venv/
+.python-version
+uv.lock
+/photo_challenge/__pycache__
