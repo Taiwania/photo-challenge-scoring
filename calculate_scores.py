@@ -6,9 +6,19 @@ import urllib.parse
 from collections import defaultdict
 
 # Constants
+# Constants
 API_URL = "https://commons.wikimedia.org/w/api.php"
 REGISTRATION_THRESHOLD_DAYS = 10
 EDIT_COUNT_THRESHOLD = 50
+
+# Load .env manually to avoid dependencies
+env_path = os.path.join(os.path.dirname(__file__), '.env')
+if os.path.exists(env_path):
+    with open(env_path, 'r') as f:
+        for line in f:
+            if line.strip() and not line.startswith('#'):
+                key, val = line.strip().split('=', 1)
+                os.environ[key] = val
 
 def parse_challenge_date(content):
     # Pattern: ... midnight UTC on 31 December 2025 ...
@@ -38,7 +48,12 @@ def parse_challenge_date(content):
 def make_api_query(params):
     params['format'] = 'json'
     url = f"{API_URL}?{urllib.parse.urlencode(params)}"
-    req = urllib.request.Request(url, headers={'User-Agent': 'CommonsPhotoChallengeScoringBot/1.0.1 (https://commons.wikimedia.org/wiki/User:Taiwania_Justo; taiwaniajusto@gmail.com)'})
+    
+    bot_username = os.getenv('COMMONS_BOT_USERNAME', 'Anonymous')
+    bot_email = os.getenv('COMMONS_BOT_EMAIL', 'anonymous@example.com')
+    user_agent = f'CommonsPhotoChallengeScoringBot/1.0.1 (https://commons.wikimedia.org/wiki/User:{bot_username}; {bot_email})'
+    
+    req = urllib.request.Request(url, headers={'User-Agent': user_agent})
     try:
         with urllib.request.urlopen(req) as response:
             return json.loads(response.read().decode())
